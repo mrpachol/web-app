@@ -1,10 +1,8 @@
-#import pandas
-
 import pandas as pd
-import openpyxl
 import os
 from config import Config
 
+# ZAPISYWANIE DANYCH
 def save_to_excel(data):
 
     PATH = Config.EXCEL_PATH
@@ -18,20 +16,15 @@ def save_to_excel(data):
         else:
             new_df.to_excel(PATH, index=False)
 
+
     except Exception as e:
         print(e)
 
 
-
-
-
-
-
-
-
-# def save_to_excel(data):
-#     try:
-#         df = pd.DataFrame(data)
-#         df.to_excel("weather_data.xlsx")
-#     except Exception as e:
-#         print(e)
+# ODCZYTYWANIE DANYCH
+def read_excel(filepath):
+    try:
+        df = pd.read_excel(filepath)
+        return df
+    except Exception as e:
+        print(e)

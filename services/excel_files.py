@@ -3,10 +3,11 @@
 import pandas as pd
 import openpyxl
 import os
+from config import Config
 
 def save_to_excel(data):
 
-    PATH = "weather_data.xlsx"
+    PATH = Config.EXCEL_PATH
 
     try:
         new_df = pd.DataFrame(data)

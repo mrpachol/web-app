@@ -1,10 +1,12 @@
 import requests
 from datetime import datetime
 from common.tools import kelvin_to_celsius, ms_to_kmhm
+from config import Config
 
 def get_weather(city):
 
-    API_KEY = "934b57f1bca382da74295d008874ce4a" # Nie powinien być na widoku!
+    API_KEY = Config.API_KEY
+    city = Config.API_CITY
 
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}"
 

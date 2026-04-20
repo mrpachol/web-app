@@ -2,8 +2,10 @@ import requests
 from datetime import datetime
 from common.tools import kelvin_to_celsius, ms_to_kmhm
 from config import Config
+from services.mysql_db import create_connection
 
-def get_weather(city):
+
+def get_weather():
 
     API_KEY = Config.API_KEY
     city = Config.API_CITY
@@ -28,3 +30,20 @@ def get_weather(city):
         return record
     except:
         print("Błąd z pobieraniem danych")
+
+def get_all_weather():
+    try:
+        conn = create_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute(f"USE {Config.DB_NAME}")
+
+        query = "SELECT * FROM weather_data ORDER BY timestamp DESC"
+
+        cursor.execute(query)
+
+        results = cursor.fetchall()
+        conn.close()
+        return results
+    except Exception as e:
+        print(e)
+

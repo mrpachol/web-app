@@ -77,39 +77,3 @@ def save_to_mysql(weather):
 
     except Exception as e:
         print(e)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# connect to server
-# cnx = mysql.connector.connect(
-#     host="127.0.0.1",
-#     port=3306,
-#     user="root",
-#     password="ZieluKoziol#20"
-# )
-#
-# if cnx.is_connected():
-#     print("Wytworzono połączenie")
-# else:
-#     print("Nie udało się")
